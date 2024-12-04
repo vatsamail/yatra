@@ -1,0 +1,66 @@
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: '0 0 * * *' # test daily against git HEAD of dependencies
+
+name: CI
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+        - '3.9'
+        - '3.10'
+        - '3.11'
+        - '3.12'
+        - '3.13'
+        - 'pypy-3.9'
+        - 'pypy-3.10'
+        # this version range needs to be synchronized with the one in pyproject.toml
+        amaranth-version:
+        - '0.5'
+        - 'git'
+        allow-failure:
+        - true
+        - false
+        exclude: # all of these are inverted (this is unfortunately the best way to do this)
+        - amaranth-version: '0.5'
+          allow-failure: false
+        - amaranth-version: 'git'
+          allow-failure: true
+    continue-on-error: '${{ matrix.allow-failure }}'
+    name: "test (${{ matrix.python-version }}, ${{ matrix.amaranth-version }}${{ matrix.allow-failure == 'false' && ', required' || '' }})"
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pdm install --dev
+      - name: Install Amaranth release
+        if: ${{ matrix.amaranth-version != 'git' }}
+        run: |
+          pip install 'amaranth[builtin-yosys] ==${{ matrix.amaranth-version }}'
+      - name: Install Amaranth from git
+        if: ${{ matrix.amaranth-version == 'git' }}
+        run: |
+          pip install 'amaranth[builtin-yosys] @ git+https://github.com/amaranth-lang/amaranth.git'
+      - name: Run tests
+        run: |
+          pdm run test
+
+  required: # group all required workflows into one to avoid reconfiguring this in Actions settings
+    needs:
+      - test
+    if: ${{ always() && !contains(needs.*.result, 'cancelled') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: ${{ contains(needs.*.result, 'failure') && 'false' || 'true' }}
