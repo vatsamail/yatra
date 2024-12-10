@@ -1,3 +1,12 @@
 *.pyc
 oss-cad-suite*/
-gtk/
+gtk/autom4te.cache
+build
+config.log
+config.status
+Makefile
+.DS_Store
+!/regression/Makefile
+/build-*/
+/install-newlib-nano/
+/stamps/
