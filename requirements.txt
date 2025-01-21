@@ -1,4 +1,5 @@
 aisuite==0.1.6
+alabaster==1.0.0
 amaranth==0.5.1
 amaranth-boards @ git+https://github.com/amaranth-lang/amaranth-boards@ad5a939b86020c53e0e193620b96ca19d5960192
 amaranth-orchard @ git+https://github.com/ChipFlow/amaranth-orchard@a7a364141c4d751ebf20f7e5390d4206180fbc8c
@@ -9,8 +10,12 @@ annotated-types==0.7.0
 anthropic==0.30.1
 anyio==4.6.2.post1
 attrs==23.2.0
+babel==2.16.0
+bitarray==2.9.3
+bitstring==4.2.3
 blinker==1.9.0
 certifi==2024.6.2
+chardet==5.2.0
 charset-normalizer==3.3.2
 chipflow-lib @ git+https://github.com/ChipFlow/chipflow-lib@497149ee9426f17f6ba47b5f12697fcd35342de7
 click==8.1.7
@@ -19,10 +24,12 @@ colorama==0.4.6
 dep-logic==0.4.9
 distlib==0.3.9
 distro==1.9.0
+docutils==0.21.2
 doit==0.36.0
--e git+https://github.com/vatsamail/yatra.git@94389d439539c19d5230e1d6ec096eb960c98d38#egg=example_socs&subdirectory=chipflow/example-socs-main
+-e git+https://github.com/vatsamail/yatra.git@1f7520457844192121c0a582b6b4c9640ed6310b#egg=example_socs&subdirectory=chipflow/example-socs-main
 filelock==3.16.1
 findpython==0.6.2
+flake8==7.1.1
 fsspec==2024.10.0
 groq==0.9.0
 h11==0.14.0
@@ -31,14 +38,17 @@ httpcore==1.0.7
 httpx==0.28.0
 huggingface-hub==0.26.3
 idna==3.7
+imagesize==1.4.1
 importlib_metadata==8.0.0
 importlib_resources==6.4.0
+inflection==0.5.1
 iniconfig==2.0.0
 installer==0.7.0
 Jinja2==3.1.4
 jiter==0.8.0
 jschon==0.11.1
-jsonschema==4.17.3
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
 -e git+https://github.com/enjoy-digital/litedram.git@e96710f0dd0d0137969f044c16f261c1abcbfee1#egg=litedram
 -e git+https://github.com/enjoy-digital/liteeth.git@99d4073c6ad9d8cce5f1c7f4f9ec652936498662#egg=liteeth
 -e git+https://github.com/enjoy-digital/liteiclink.git@04ed5a38f6ca507740dbf7aeb68539308a1848f6#egg=liteiclink
@@ -50,21 +60,29 @@ jsonschema==4.17.3
 -e git+https://github.com/litex-hub/litespi.git@82fbb79d42d8c85ad22240b99cc06b01d5588c91#egg=litespi
 -e git+https://github.com/enjoy-digital/litex.git@a32096e80602e4949565c721ca6d620d44270a60#egg=litex
 -e git+https://github.com/litex-hub/litex-boards.git@041c1607ce7461909cc4076937a55c068e850557#egg=litex_boards
+lxml==5.3.0
+Markdown==3.7
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
+mccabe==0.7.0
 mdurl==0.1.2
 -e git+https://github.com/m-labs/migen.git@ccaee68e14d3636e1d8fb2e0864dd89b1b1f7384#egg=migen
 msgpack==1.1.0
 numpy==2.1.3
 openai==1.56.2
 packaging==24.1
+Pallets-Sphinx-Themes==2.3.0
 pandas==2.2.3
 pbs-installer==2024.10.16
 pdm==2.21.0
+pillow==11.0.0
 platformdirs==4.2.2
 pluggy==1.5.0
+PyBoolector==3.2.4.20240823.1
+pycodestyle==2.12.1
 pydantic==2.10.3
 pydantic_core==2.27.1
+pyflakes==3.2.0
 Pygments==2.18.0
 pyproject_hooks==1.2.0
 pyrsistent==0.20.0
@@ -72,6 +90,7 @@ pyserial==3.5
 pytest==8.3.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+python-jsonschema-objects==0.5.7
 -e git+https://github.com/litex-hub/pythondata-cpu-lm32.git@594f2068e32a6faa84f05f9b443b58c3c4658113#egg=pythondata_cpu_lm32
 -e git+https://github.com/litex-hub/pythondata-cpu-mor1kx.git@92628ec323dcce464185ad9e0f58a788c2be6989#egg=pythondata_cpu_mor1kx
 -e git+https://github.com/litex-hub/pythondata-cpu-naxriscv.git@dfb4bfdf19e864ec773f9c2ac2c90aef5a4961a2#egg=pythondata_cpu_naxriscv
@@ -84,19 +103,41 @@ python-dotenv==1.0.1
 -e git+https://github.com/litex-hub/pythondata-software-compiler_rt.git@fcb03245613ccf3079cc833a701f13d0beaae09d#egg=pythondata_software_compiler_rt
 -e git+https://github.com/litex-hub/pythondata-software-picolibc.git@a5e11229885a87083ec54034f8d693ba52ea2718#egg=pythondata_software_picolibc
 pytz==2024.2
+pyucis==0.1.4.11087239919
 pyvcd==0.4.0
+pyvsc==0.9.3.10985030023
 PyYAML==6.0.2
+referencing==0.35.1
+reportlab==4.2.5
 requests==2.30.0
 resolvelib==1.1.0
 rfc3986==2.0.0
 rich==13.9.4
+rpds-py==0.22.3
+rst2pdf==0.102
 shellingham==1.5.4
 six==1.17.0
+smartypants==2.0.1
 sniffio==1.3.1
+snowballstemmer==2.2.0
 socksio==1.0.0
+Sphinx==8.1.3
+sphinx-issues==5.0.0
+sphinx-notfound-page==1.0.4
+sphinx-rtd-theme==3.0.2
+sphinxcontrib-applehelp==2.0.0
+sphinxcontrib-devhelp==2.0.0
+sphinxcontrib-htmlhelp==2.1.0
+sphinxcontrib-jquery==4.1
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-log-cabinet==1.0.1
+sphinxcontrib-qthelp==2.0.0
+sphinxcontrib-serializinghtml==2.0.0
+tabulate==0.9.0
 tokenizers==0.21.0
 tomli==2.0.1
 tomlkit==0.13.2
+toposort==1.10
 tqdm==4.67.1
 truststore==0.10.0
 typing_extensions==4.12.2
