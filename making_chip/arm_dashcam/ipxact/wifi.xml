@@ -1,0 +1,23 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>wifi_ip</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Wi-Fi Interface for Data Transfer</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="data_in" direction="in">
+      <signal>data_in</signal>
+    </port>
+    <port name="data_out" direction="out">
+      <signal>data_out</signal>
+    </port>
+    <port name="data_ready" direction="out">
+      <signal>data_ready</signal>
+    </port>
+  </ports>
+</component>

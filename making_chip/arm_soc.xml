@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:spirit="http://www.accellera.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>example.vendor</spirit:vendor>
+  <spirit:library>example.library</spirit:library>
+  <spirit:name>arm_soc</spirit:name>
+  <spirit:version>1.0</spirit:version>
+
+  <!-- Description -->
+  <spirit:description>ARM Cortex-M based SoC with UART, GPIO, Timer, IOMUX, Fuses, and NVIC.</spirit:description>
+
+  <!-- Bus Interfaces -->
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>AHB_M</spirit:name>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="AMBA" spirit:name="AHB" spirit:version="2.0"/>
+      <spirit:slave>
+        <spirit:addressSpaceRef>SoC_Memory</spirit:addressSpaceRef>
+      </spirit:slave>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>APB_S</spirit:name>
+      <spirit:busType spirit:vendor="arm.com" spirit:library="AMBA" spirit:name="APB" spirit:version="2.0"/>
+      <spirit:master>
+        <spirit:addressSpaceRef>Peripheral_Region</spirit:addressSpaceRef>
+      </spirit:master>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+
+  <!-- Memory Maps -->
+  <spirit:memoryMaps>
+    <spirit:memoryMap>
+      <spirit:name>SoC_Memory</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>SRAM</spirit:name>
+        <spirit:baseAddress>0x20000000</spirit:baseAddress>
+        <spirit:range>0x00080000</spirit:range>
+        <spirit:width>32</spirit:width>
+        <spirit:usage>memory</spirit:usage>
+      </spirit:addressBlock>
+      <spirit:addressBlock>
+        <spirit:name>Flash</spirit:name>
+        <spirit:baseAddress>0x00000000</spirit:baseAddress>
+        <spirit:range>0x00100000</spirit:range>
+        <spirit:width>32</spirit:width>
+        <spirit:usage>memory</spirit:usage>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+    <spirit:memoryMap>
+      <spirit:name>Peripheral_Region</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>UART</spirit:name>
+        <spirit:baseAddress>0x40001000</spirit:baseAddress>
+        <spirit:range>0x00000100</spirit:range>
+        <spirit:width>32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+      </spirit:addressBlock>
+      <spirit:addressBlock>
+        <spirit:name>GPIO</spirit:name>
+        <spirit:baseAddress>0x40002000</spirit:baseAddress>
+        <spirit:range>0x00000100</spirit:range>
+        <spirit:width>32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+  </spirit:memoryMaps>
+
+  <!-- Address Spaces -->
+  <spirit:addressSpaces>
+    <spirit:addressSpace>
+      <spirit:name>SoC_Memory</spirit:name>
+      <spirit:range>0x00100000</spirit:range>
+      <spirit:width>32</spirit:width>
+    </spirit:addressSpace>
+    <spirit:addressSpace>
+      <spirit:name>Peripheral_Region</spirit:name>
+      <spirit:range>0x00100000</spirit:range>
+      <spirit:width>32</spirit:width>
+    </spirit:addressSpace>
+  </spirit:addressSpaces>
+
+  <!-- Components -->
+  <spirit:components>
+    <spirit:componentInstance>
+      <spirit:instanceName>uart0</spirit:instanceName>
+      <spirit:componentRef spirit:vendor="example.vendor" spirit:library="example.library" spirit:name="uart" spirit:version="1.0"/>
+    </spirit:componentInstance>
+    <spirit:componentInstance>
+      <spirit:instanceName>gpio0</spirit:instanceName>
+      <spirit:componentRef spirit:vendor="example.vendor" spirit:library="example.library" spirit:name="gpio" spirit:version="1.0"/>
+    </spirit:componentInstance>
+  </spirit:components>
+
+  <!-- Parameters -->
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>Core_Clock_Frequency</spirit:name>
+      <spirit:value>100000000</spirit:value>
+      <spirit:description>Core clock frequency in Hz</spirit:description>
+    </spirit:parameter>
+  </spirit:parameters>
+</spirit:component>

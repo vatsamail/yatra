@@ -1,0 +1,57 @@
+# UPF file for ARM Cortex-M SoC Design
+
+# Define Power Domains
+create_power_domain pd_core -coverage always_on
+create_power_domain pd_peripheral -coverage always_on
+create_power_domain pd_uart -coverage always_on
+create_power_domain pd_gpio -coverage always_on
+create_power_domain pd_noc -coverage always_on
+
+# Assign Blocks to Power Domains
+set_power_domain pd_core [get_cells u_soc]
+set_power_domain pd_uart [get_cells u_uart]
+set_power_domain pd_gpio [get_cells u_gpio]
+set_power_domain pd_noc [get_cells u_noc_interface]
+
+# Define Power State for Core and Peripherals
+# 'always_on' means the block is always powered on
+# If any block needs to be power-gated, use 'power_gated' instead.
+set_power_state pd_core always_on
+set_power_state pd_peripheral always_on
+set_power_state pd_uart always_on
+set_power_state pd_gpio always_on
+set_power_state pd_noc always_on
+
+# Define Power Management for Clock Gating (Example)
+create_clock_gating pd_core/clk -domain pd_core
+create_clock_gating pd_peripheral/clk -domain pd_peripheral
+
+# Isolation Logic for Power Domains
+# Isolation is necessary when switching off power to certain blocks
+create_isolation pd_gpio -domain pd_core -port [get_pins u_gpio/gpio_out]
+create_isolation pd_uart -domain pd_core -port [get_pins u_uart/tx]
+
+# Level Shifting (For domains with different voltage levels, if applicable)
+# In this case, assuming voltage level difference between core and peripherals
+create_level_shifter -from pd_core -to pd_peripheral -pin [get_pins u_soc/gpio_out]
+create_level_shifter -from pd_core -to pd_uart -pin [get_pins u_soc/uart_tx]
+
+# Power Intent for Low-Power Operation
+# Define how to shut down the power for unused domains (example for power-gating)
+
+# Power Gate the UART module when not in use
+create_power_gate -domain pd_uart -gate [get_cells uart_power_gate]
+
+# Power Gate the GPIO module when not in use
+create_power_gate -domain pd_gpio -gate [get_cells gpio_power_gate]
+
+# Define Wake-up Events for Power-Gated Domains
+# For example, wake up UART on an interrupt signal
+create_wakeup_event -source [get_pins u_soc/uart_int] -destination [get_cells uart_power_gate]
+
+# Define Power Domain Switches (Power up/down control based on conditions)
+# Power up peripheral domain when core is active
+create_power_switch -from pd_core -to pd_peripheral -condition active
+
+# Save the UPF file
+# The UPF file captures the power strategy for synthesis, implementation, and verification

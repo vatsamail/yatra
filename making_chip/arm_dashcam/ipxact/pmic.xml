@@ -1,0 +1,20 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>pmic</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Power Management IC (PMIC) for Voltage Regulation and Power State Management</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="power_on" direction="in">
+      <signal>power_on</signal>
+    </port>
+    <port name="power_good" direction="out">
+      <signal>power_good</signal>
+    </port>
+  </ports>
+</component>

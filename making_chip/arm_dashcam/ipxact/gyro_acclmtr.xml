@@ -1,0 +1,23 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>accelerometer_gyroscope_interface</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Accelerometer/Gyroscope Interface</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="accel_x" direction="out">
+      <signal>accel_x</signal>
+    </port>
+    <port name="accel_y" direction="out">
+      <signal>accel_y</signal>
+    </port>
+    <port name="accel_z" direction="out">
+      <signal>accel_z</signal>
+    </port>
+  </ports>
+</component>

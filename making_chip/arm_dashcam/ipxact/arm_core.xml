@@ -1,0 +1,29 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>arm_core</name>
+  <vendor>ARM</vendor>
+  <version>1.0</version>
+  <description>ARM Cortex-A55 Processor</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="instr_in" direction="in">
+      <signal>instr_in</signal>
+    </port>
+    <port name="data_out" direction="out">
+      <signal>data_out</signal>
+    </port>
+    <port name="addr_out" direction="out">
+      <signal>addr_out</signal>
+    </port>
+    <port name="mem_read" direction="out">
+      <signal>mem_read</signal>
+    </port>
+    <port name="mem_write" direction="out">
+      <signal>mem_write</signal>
+    </port>
+  </ports>
+</component>

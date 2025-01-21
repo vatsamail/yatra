@@ -1,0 +1,54 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>noc_axi</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>AXI-Based Network-on-Chip (NoC) for ArmDashCam SoC</description>
+  
+  <!-- Parameters -->
+  <parameters>
+    <parameter name="NUM_MASTERS" value="4" />
+    <parameter name="NUM_SLAVES" value="4" />
+  </parameters>
+  
+  <!-- Ports -->
+  <ports>
+    <!-- Clock and Reset -->
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    
+    <!-- AXI Master Interfaces -->
+    <port name="axi_m0_awaddr" direction="out">
+      <signal>axi_m0_awaddr</signal>
+    </port>
+    <port name="axi_m0_awvalid" direction="out">
+      <signal>axi_m0_awvalid</signal>
+    </port>
+    <port name="axi_m0_wdata" direction="out">
+      <signal>axi_m0_wdata</signal>
+    </port>
+    <port name="axi_m0_wvalid" direction="out">
+      <signal>axi_m0_wvalid</signal>
+    </port>
+    <port name="axi_m0_bready" direction="out">
+      <signal>axi_m0_bready</signal>
+    </port>
+    
+    <!-- AXI Slave Interfaces -->
+    <port name="axi_s0_araddr" direction="in">
+      <signal>axi_s0_araddr</signal>
+    </port>
+    <port name="axi_s0_arvalid" direction="in">
+      <signal>axi_s0_arvalid</signal>
+    </port>
+    <port name="axi_s0_rdata" direction="out">
+      <signal>axi_s0_rdata</signal>
+    </port>
+    <port name="axi_s0_rvalid" direction="out">
+      <signal>axi_s0_rvalid</signal>
+    </port>
+  </ports>
+</component>

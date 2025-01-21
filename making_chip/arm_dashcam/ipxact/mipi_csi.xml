@@ -1,0 +1,20 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>mipi_csi_2</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>MIPI CSI-2 Interface for Camera Input</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="mipi_data_in" direction="in">
+      <signal>mipi_data_in</signal>
+    </port>
+    <port name="mipi_data_out" direction="out">
+      <signal>mipi_data_out</signal>
+    </port>
+  </ports>
+</component>

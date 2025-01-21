@@ -1,0 +1,75 @@
+# LEF File for ARM Cortex-M SoC Design
+
+VERSION 5.8 ;    # LEF Version
+
+# Define Library Header
+LIBRARY arm_soc_cells ;  # Library name
+
+# Define technology
+TECHNOLOGY 130nm ;  # Technology node, example: 130nm
+
+# Define the units used in the LEF file
+UNITS DISTANCE METERS 1e-6 ;  # Distance unit in microns (1e-6 for microns)
+
+# Define cell 1: Inverter (example)
+CELL INVX1 ;  # Cell name (Inverter with 1x drive strength)
+    LEF45 ;  # Technology cell name, corresponds to the LEF library in your design
+    SIZE 0.6 BY 0.6 ;  # Cell size in microns (width x height)
+
+    # Define the pins of the cell
+    PIN A ;  # Pin name (A)
+        DIRECTION INPUT ;  # Pin direction (INPUT)
+        LOCATION 0.1 0.5 ;  # Pin location (relative to cell origin)
+    END PIN
+
+    PIN Y ;  # Pin name (Y)
+        DIRECTION OUTPUT ;  # Pin direction (OUTPUT)
+        LOCATION 0.5 0.5 ;  # Pin location (relative to cell origin)
+    END PIN
+
+    # Additional pin or other properties can be added if needed
+END CELL
+
+# Define cell 2: Buffer (example)
+CELL BUFX2 ;  # Cell name (Buffer with 2x drive strength)
+    LEF45 ;  # Technology cell name, corresponds to the LEF library in your design
+    SIZE 1.0 BY 0.8 ;  # Cell size in microns
+
+    # Define the pins of the buffer cell
+    PIN A ;  # Pin name (A)
+        DIRECTION INPUT ;  # Pin direction (INPUT)
+        LOCATION 0.1 0.4 ;  # Pin location (relative to cell origin)
+    END PIN
+
+    PIN Y ;  # Pin name (Y)
+        DIRECTION OUTPUT ;  # Pin direction (OUTPUT)
+        LOCATION 0.9 0.4 ;  # Pin location (relative to cell origin)
+    END PIN
+
+    # Additional properties or pins
+END CELL
+
+# Define cell 3: AND Gate (example)
+CELL AND2X1 ;  # Cell name (AND Gate with 2 inputs and 1 output)
+    LEF45 ;  # Technology cell name
+    SIZE 0.8 BY 0.6 ;  # Cell size
+
+    # Define the pins of the AND gate cell
+    PIN A1 ;  # Pin name (A1)
+        DIRECTION INPUT ;  # Pin direction (INPUT)
+        LOCATION 0.2 0.3 ;  # Pin location (relative to cell origin)
+    END PIN
+
+    PIN A2 ;  # Pin name (A2)
+        DIRECTION INPUT ;  # Pin direction (INPUT)
+        LOCATION 0.2 0.7 ;  # Pin location
+    END PIN
+
+    PIN Y ;  # Pin name (Y)
+        DIRECTION OUTPUT ;  # Pin direction (OUTPUT)
+        LOCATION 0.7 0.5 ;  # Pin location
+    END PIN
+END CELL
+
+# Define the end of the library
+END LIBRARY

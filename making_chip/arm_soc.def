@@ -1,0 +1,82 @@
+
+# VERSION: Defines the DEF version, which should correspond to your design tool's supported DEF format version (here, it’s 5.8).
+# DESIGN: Specifies the name of your design (arm_soc in this case).
+# UNITS: The units used for distances and other physical properties (here, it’s microns).
+# DESIGN_AREA: Specifies the total area available for placing the design (in microns).
+# PINS: Lists the I/O pins (like clk, uart_rx, gpio_in, etc.) with their physical locations on the chip.
+# COMPONENTS: Lists the components in the design (like the SoC core, UART, and GPIO modules) and their placements on the chip.
+# TRACKS: Defines the power (VDD) and ground (VSS) rails on the chip.
+# NETS: Specifies the electrical nets that connect different components and I/O pins.
+# CLOCKS: Defines the clock distribution and pin connections for timing analysis.
+# POWER_DOMAINS: Optional section that defines power domains for various components.
+# TIMING: Timing constraints (optional if required by your tool, otherwise defined in the SDC file).
+
+
+
+# DEF File for ARM Cortex-M SoC Design
+
+VERSION 5.8 ;   # DEF version (adjust based on tool version)
+
+DESIGN arm_soc ;  # Design name
+
+UNITS DISTANCE microns ;  # Unit of measurement (microns)
+
+# Global Floorplan Information (example values)
+DESIGN_AREA ( 0 0 ) ( 10000 10000 ) ;  # Area of the chip (in microns)
+
+# I/O Pins
+# Define the physical locations of I/O pins on the chip
+PINS
+    +IO Pin (clk)   ( 100 100 )   ; System Clock pin
+    +IO Pin (uart_rx)   ( 200 100 )   ; UART RX pin
+    +IO Pin (uart_tx)   ( 200 200 )   ; UART TX pin
+    +IO Pin (gpio_in[0])   ( 300 100 )   ; GPIO input pins
+    +IO Pin (gpio_out[0])   ( 300 200 )   ; GPIO output pins
+    +IO Pin (gpio_dir[0])   ( 400 100 )   ; GPIO direction pins
+END PINS
+
+# Core and Peripheral Placement
+# Define where the main core and peripheral blocks are placed in the chip area
+COMPONENTS
+    +COMPONENT u_soc   1000 1000   ARM Cortex-M core    ; Place SoC core at (1000,1000)
+    +COMPONENT u_uart  1200 1200   UART module           ; Place UART module at (1200,1200)
+    +COMPONENT u_gpio  1400 1400   GPIO module           ; Place GPIO module at (1400,1400)
+END COMPONENTS
+
+# Define Power and Ground Rails
+# Power (VDD) and Ground (VSS) definitions for the chip
+TRACKS
+    +VDD ( 100 100 )  ( 5000 5000 ) ; Power rail definition (example coordinates)
+    +VSS ( 100 100 )  ( 5000 5000 ) ; Ground rail definition (example coordinates)
+END TRACKS
+
+# Net Definitions
+# Define the electrical connections between components
+NETS
+    +NET clk   (u_soc/clk)   ( 100 100 ) ; Clock net, connected to the system clock
+    +NET uart_rx   (u_uart/uart_rx)   ( 200 100 ) ; UART RX net
+    +NET uart_tx   (u_uart/uart_tx)   ( 200 200 ) ; UART TX net
+    +NET gpio_in[0]  (u_gpio/gpio_in[0])   ( 300 100 ) ; GPIO input net
+    +NET gpio_out[0] (u_gpio/gpio_out[0])  ( 300 200 ) ; GPIO output net
+    +NET gpio_dir[0] (u_gpio/gpio_dir[0])  ( 400 100 ) ; GPIO direction net
+END NETS
+
+# Clock Definitions
+# Define the clock tree for the design
+CLOCKS
+    +CLOCK clk   ( 100 100 ) ; System clock defined at location (100,100)
+END CLOCKS
+
+# Power/Ground Assignment (Optional: Assign power domains, e.g., VDD, VSS)
+POWER_DOMAINS
+    +VDD (u_soc)  (u_uart) (u_gpio) ; Power domain for core and peripherals
+END POWER_DOMAINS
+
+# Defining Timing Constraints (optional, if needed in the DEF file)
+# Use a special syntax if the timing constraints are to be embedded in the DEF file (otherwise handled by SDC)
+TIMING
+    +SETUP ( 0.5 ) ( 100 100 ) ; Timing setup constraints (example values)
+    +HOLD ( 0.2 ) ( 100 100 ) ; Timing hold constraints (example values)
+END TIMING
+
+# End of DEF File

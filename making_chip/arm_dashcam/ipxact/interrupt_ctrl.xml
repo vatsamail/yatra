@@ -1,0 +1,20 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>interrupt_controller</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Interrupt Controller for Managing Interrupts from Various Subsystems</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="interrupt_req" direction="in">
+      <signal>interrupt_req</signal>
+    </port>
+    <port name="interrupt_ack" direction="out">
+      <signal>interrupt_ack</signal>
+    </port>
+  </ports>
+</component>

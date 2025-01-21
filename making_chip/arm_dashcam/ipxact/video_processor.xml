@@ -1,0 +1,23 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>vpu</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Video Processing Unit (VPU) for Video Encoding and Motion Detection</description>
+  <ports>
+    <port name="clk" direction="in">
+      <signal>clk</signal>
+    </port>
+    <port name="reset_n" direction="in">
+      <signal>reset_n</signal>
+    </port>
+    <port name="video_data_in" direction="in">
+      <signal>video_data_in</signal>
+    </port>
+    <port name="video_data_out" direction="out">
+      <signal>video_data_out</signal>
+    </port>
+    <port name="video_processed" direction="out">
+      <signal>video_processed</signal>
+    </port>
+  </ports>
+</component>

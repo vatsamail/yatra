@@ -1,0 +1,35 @@
+<component xmlns="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4 http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4/spirit.xsd">
+  <name>clk_rst_ip</name>
+  <vendor>ArmDashCam</vendor>
+  <version>1.0</version>
+  <description>Clock and Reset Generation IP for ArmDashCam SoC</description>
+  
+  <!-- Parameters -->
+  <parameters>
+    <parameter name="SYS_CLK_FREQ" value="100MHz" />
+    <parameter name="SYS_RST_DELAY" value="100us" />
+  </parameters>
+  
+  <!-- Ports -->
+  <ports>
+    <!-- Input Clock -->
+    <port name="clk_in" direction="in">
+      <signal>clk_in</signal>
+    </port>
+    
+    <!-- Reset -->
+    <port name="reset_in" direction="in">
+      <signal>reset_in</signal>
+    </port>
+    
+    <!-- System Clocks -->
+    <port name="sys_clk" direction="out">
+      <signal>sys_clk</signal>
+    </port>
+    
+    <!-- Reset Signals -->
+    <port name="sys_reset_n" direction="out">
+      <signal>sys_reset_n</signal>
+    </port>
+  </ports>
+</component>
